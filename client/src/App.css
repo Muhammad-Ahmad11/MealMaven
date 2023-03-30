@@ -1,0 +1,220 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.demo {
+  color: yellowgreen;
+}
+
+.login-section {
+  background-color: #f2f2f2;
+  padding: 50px 0;
+}
+
+.login-form {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  text-align: center;
+}
+
+.form-title {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.form-input {
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-button {
+  margin-top: 30px;
+}
+
+.button-primary {
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-primary:hover {
+  background-color: #3e8e41;
+}
+
+.login-image {
+  margin-top: 30px;
+}
+
+.login-image-link {
+  color: #333;
+  text-decoration: none;
+}
+
+.login-image-link:hover {
+  text-decoration: underline;
+}
+
+.home-page img {
+  max-width: 100%;
+  height: auto;
+}
+
+.home-page {
+  background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1556911220-bff31c812dba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3MzkxNTEyNQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-submit {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-submit:hover {
+  background-color: #0069d9;
+}
+
+.recipes-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.recipes-header {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.recipes-list {
+  list-style: none;
+  padding: 0;
+}
+
+.recipe {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.recipe-name {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.recipe-ingredients,
+.recipe-instructions {
+  margin: 0;
+}
+
+.recipe-ingredients {
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  margin: 0 10px;
+}
+
+.containerr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px;
+  height: 100vh;
+}
+
+.recipe-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.recipe-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.recipe-action-btn {
+  color: #000;
+}
+
+.recipe-action-btn:hover {
+  color: #ff0000;
+}
