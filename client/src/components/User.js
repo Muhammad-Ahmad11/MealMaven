@@ -146,7 +146,7 @@ const User = () => {
                       <a href="/Recipe">Recipes</a>
                     </li>
                     <li className="navigation-tab">
-                      <a href="/">Diet Plan</a>
+                      <a href="/UserDietPlan">Diet Plan</a>
                     </li>
                     <li className="navigation-tab">
                       <a href="/">Premium</a>

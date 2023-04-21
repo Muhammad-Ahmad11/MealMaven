@@ -18,6 +18,12 @@ import DairyRecipe from './components/DairyRecipe';
 import StarchFreeRecipe from './components/StarchFreeRecipe';
 import ManageRecipe from './components/ManageRecipe';
 import ManageDiet from './components/ManageDiet';
+import AdminSignup from './components/AdminSignup';
+import AdminLogin from './components/AdminLogin';
+import AdminHome from './components/AdminHome';
+import UserDietPlan from './components/UserDietPlan';
+import AdminDietPlan from './components/AdminDietPlan';
+// import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -38,6 +44,12 @@ const App = () => {
         <Route path="/DairyRecipe" element={<DairyRecipe/>}/>
         <Route path="/ManageRecipe" element={<ManageRecipe/>}/>
         <Route path="/ManageDiet" element={<ManageDiet/>}/>
+        <Route path="/AdminSignup" element={<AdminSignup/>}/>
+        <Route path="/AdminLogin" element={<AdminLogin/>}/>
+        <Route path="/AdminHome" element={<AdminHome/>}/>
+        <Route path="/UserDietPlan" element={<UserDietPlan/>}/>
+        <Route path="/AdminDietPlan" element={<AdminDietPlan/>}/>
+        {/* <Route path="/try" element={<Footer/>}/> */}
         <Route element={<ErrorPage/>}/>
     </Routes>
     </>

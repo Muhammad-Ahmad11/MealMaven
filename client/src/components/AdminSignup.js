@@ -4,9 +4,9 @@ import { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-const UserSignup = () => {
+const AdminSignup = () => {
     const history = useNavigate();
-    const [user, setUser] = useState({name:"", email:"", phone:"", password:"",cpassword:""});
+    const [Admin, setAdmin] = useState({name:"", email:"", password:"",cpassword:""});
 
     let name, value;
     const handleInputs = (e) => {
@@ -14,61 +14,55 @@ const UserSignup = () => {
         name = e.target.name;
         value= e.target.value;
 
-        setUser({...user, [name]:value});
+        setAdmin({...Admin, [name]:value});
     }
 
     const PostData = async (e) => {
         e.preventDefault();
 
-        if (!user.email || !user.password || !user.cpassword || !user.phone || !user.name) {
+        if (!Admin.email || !Admin.password || !Admin.cpassword || !Admin.name) {
             window.alert('Please fill all the fields!');
             return;
         }
 
-        if(user.phone.length < 11 || user.phone.length>14)
-        {
-            window.alert('Invalid Phone number lenght!');
-            return;
-        }
-
-        if(user.name.length < 3)
+        if(Admin.name.length < 3)
         {
             window.alert('Name must have atleast 3 characters!');
             return;
         }
 
-        if(user.password.length < 8)
+        if(Admin.password.length < 8)
         {
             window.alert('Password must have atleast 8 characters!');
             return;
         }
 
-        if(!user.email.includes('@gmail.com'))
+        if(!Admin.email.includes('@gmail.com'))
         {
             window.alert('Invalid email address!');
             return;
         }
 
-        if(!/[A-Z]/.test(user.password))
+        if(!/[A-Z]/.test(Admin.password))
         {
             window.alert('Password must have atleast 1 uppercase letter!');
             return;
         }
 
-        if(!/\d/.test(user.password))
+        if(!/\d/.test(Admin.password))
         {
             window.alert('Password must have atleast 1 numerical digit!');
             return;
         }
 
-        const { name, email, phone, password, cpassword } = user;
-        const res = await fetch("/register", {
+        const { name, email, password, cpassword } = Admin;
+        const res = await fetch("/registerAdmin", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
             },
             body:JSON.stringify({
-                name, email, phone, password, cpassword
+                name, email, password, cpassword
             })
         });
          
@@ -82,7 +76,7 @@ const UserSignup = () => {
         } else {
             window.alert("Registeration Successful");
 
-            history("/UserLogin");
+            history("/AdminLogin");
         }
 
 
@@ -98,7 +92,7 @@ const UserSignup = () => {
     <div className="login-content row">
     <div className="col-md-6">
       <div className="login-form" >
-      <h1 className="form-title">User Sign Up</h1> 
+        <h2 className="form-title">Admin Sign Up</h2>
         <form className="register-form" id="register-form">
           <div className="form-group">
             <label htmlFor="name">
@@ -109,7 +103,7 @@ const UserSignup = () => {
               name="name" 
               id="name" 
               autoComplete='off' 
-              value={user.name} 
+              value={Admin.name} 
               onChange={handleInputs}
               placeholder='Your Name' 
               style={{width: "100%", maxWidth: "400px", margin: "0 auto"}}
@@ -126,29 +120,12 @@ const UserSignup = () => {
               name="email" 
               id="email" 
               autoComplete='off' 
-              value={user.email} 
+              value={Admin.email} 
               onChange={handleInputs}
               placeholder='Your Email' 
               style={{width: "100%", maxWidth: "400px", margin: "0 auto"}}
               className="form-input"
             />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="phone">
-              <i class="zmdi zmdi-phone-in-talk material-icons-name"></i>
-            </label>
-            <input 
-              type="number" 
-              name="phone" 
-              id="phone" 
-              autoComplete='off' 
-              value={user.phone} 
-              onChange={handleInputs}
-              placeholder='Your Phone' 
-              style={{width: "100%", maxWidth: "400px", margin: "0 auto"}}
-              className="form-input"
-              />
           </div>
 
           <div className="form-group">
@@ -160,7 +137,7 @@ const UserSignup = () => {
               name="password" 
               id="password" 
               autoComplete='off' 
-              value={user.password} 
+              value={Admin.password} 
               onChange={handleInputs}
               placeholder='Your Password' 
               style={{width: "100%", maxWidth: "400px", margin: "0 auto"}}
@@ -177,7 +154,7 @@ const UserSignup = () => {
               name="cpassword" 
               id="cpassword" 
               autoComplete='off' 
-              value={user.cpassword} 
+              value={Admin.cpassword} 
               onChange={handleInputs}
               placeholder='Confirm Your Password' 
               style={{width: "100%", maxWidth: "400px", margin: "0 auto"}}
@@ -197,7 +174,9 @@ const UserSignup = () => {
           </div>
         </form>
       </div>
-                            <NavLink to="/UserLogin" className="signup-image-link">I am already registered</NavLink>
+      {/* <div className='col-md-6'> */}
+                            <NavLink to="/AdminLogin" className="signup-image-link">I am already registered</NavLink>
+                        {/* </div> */}
                        </div>
                    </div>
                </div>
@@ -207,5 +186,4 @@ const UserSignup = () => {
            </>
   )
 }
-export default UserSignup
-
+export default AdminSignup

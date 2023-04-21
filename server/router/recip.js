@@ -2,6 +2,7 @@ const express = require("express");
 const Recipe = require("../models/recipeschema");
 const router = express.Router();
 const DietPlan = require("../models/dietschema");
+const RequestDietPlan = require("../models/requestdietschema");
 
 router.get("/recipes", async (req, res) => {
   const type = req.query.type;
@@ -139,4 +140,118 @@ router.put('/diet9/:name', async (req, res) => {
     res.status(500).json({ error: 'error' });
   }
 });
+
+// router.post('/requestdiet', async (req, res) => {
+//   try {
+//     const newRequestDietPlan = new RequestDietPlan({
+//       email: req.body.email,
+//       height: req.body.height,
+//       weight: req.body.weight,
+//       age: req.body.age,
+//       prefer: req.body.prefer,
+//       avoid: req.body.avoid,
+//       goal: req.body.goal,
+//       complete: req.body.complete,
+//     });
+
+//     await newRequestDietPlan.save();
+
+//     res.status(200).send('Data saved successfully');
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send('Internal server error');
+//   }
+// });
+
+router.post('/requestdiet', async (req, res) => {
+  try {
+    const existingRequest = await RequestDietPlan.findOne({ email: req.body.email });
+    if (existingRequest) {
+      return res.status(400).send('Email already exists');
+    }
+
+    const newRequestDietPlan = new RequestDietPlan({
+      email: req.body.email,
+      height: req.body.height,
+      weight: req.body.weight,
+      age: req.body.age,
+      prefer: req.body.prefer,
+      avoid: req.body.avoid,
+      goal: req.body.goal,
+      complete: req.body.complete,
+      plan: req.body.plan
+    });
+
+    await newRequestDietPlan.save();
+
+    res.status(200).send('Data saved successfully');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+});
+
+router.get("/viewRequestedDietPlans", async (req, res) => {
+  const type = req.query.type;
+  const requests = await RequestDietPlan.find();
+  res.json(requests);
+});
+
+router.post('/assignDietPlan', async (req, res) => {
+  const { requestId, dietPlan } = req.body;
+
+  try {
+    // Find the diet request by ID
+    const request = await RequestDietPlan.findById(requestId);
+
+    if (!request) {
+      return res.status(404).json({ message: 'Request not found' });
+    }
+
+    // Update the request with the assigned diet plan
+    request.plan = dietPlan;
+    request.complete = true;
+
+    // Save the updated request to the database
+    const updatedRequest = await request.save();
+
+    res.status(200).json(updatedRequest);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+router.get('/dietplann/:email', async (req, res) => {
+  try {
+    const query = { email: req.params.email };
+    const userRequest = await RequestDietPlan.findOne(query);
+    if (!userRequest) {
+      return res.status(404).send('Request not found for user with email: ' + req.params.email);
+    }
+
+    res.send(userRequest);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+});
+
+router.get('/dietplanfull/:plan', async (req, res) => {
+  try {
+    
+    const query = { name: req.params.plan };
+    
+    const userRequest = await DietPlan.findOne(query);
+    if (!userRequest) {
+      return res.status(404).send('Diet Plan not found');
+    }
+    
+    res.send(userRequest);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+});
+
 module.exports= router;

@@ -2,17 +2,19 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const authenticate = require("../middleware/authenticate");
+const authenticateAdmin = require("../middleware/authenticateAdmin");
 const cokie = require ('cookie-parser');
 router.use(cokie());
 
 require('../db/connect'); 
 const User = require("../models/userschema");
+const Admin = require("../models/adminschema");
 
 router.get('/', (req, res) => {
     res.send("Hello from server");
 });
 
-
+//user Register
 router.post('/register', async (req, res) => {
 const { name, email, phone, password, cpassword} =req.body;
 
@@ -52,8 +54,43 @@ const { name, email, phone, password, cpassword} =req.body;
     
 });
 
-//login
+//admin Register
+router.post('/registerAdmin', async (req, res) => {
+    const { name, email, password, cpassword} = req.body;
+    
+        if (!name || !email || !password || !cpassword)
+        {
+            return res.status(422).json({error: "plz add info full"});
+        }
+        else{
+        try
+        {
+            const adminExist = await Admin.findOne({email:email});
+    
+            if(adminExist) {
+                return res.status(422).json({error: "Email already exists"});
+            } else if(password!==cpassword)
+            {
+                return res.status(422).json({error: "Passwords not matching"});
+            }
+            else {
+                const admin = new Admin({name, email, password, cpassword});
+                
+                const adminRegister = await admin.save();
+    
+                if(adminRegister) {
+                    return res.status(500).json({message: "Regist Successful"});
+                } else {
+                    return res.status(422).json({error: "Regist Fail"});
+                } 
+            }
+        } catch(err) {
+            console.log(err);
+        }
+        }
+    });
 
+//userlogin 
 router.post('/signin', async (req, res)=> {
     //console.log(req.body);
     //res.json({message: "awesome"} );
@@ -74,8 +111,53 @@ router.post('/signin', async (req, res)=> {
             var isMatch = (password==userLogin.password);
         }
 
-        
+        if(userLogin)
+        {
+            token = await userLogin.generateAuthToken();
+            console.log(token);
+            console.log("token")
 
+            res.cookie("jwtoken", token, {
+                expires:new Date(Date.now() + 25892000000),
+                httpOnly:true
+            });
+
+            if(!isMatch)
+            {
+                res.status(400).json({ error: "Invalid Credentials pass"});
+            }
+            else {
+                res.json({ message: "Sign in successful"});
+            }
+        }
+        else{
+            res.status(400).json({ error: "Invalid Credentials email"});
+        }
+    } catch(err) {
+        console.log(err);
+    }
+});
+
+//Adminlogin 
+router.post('/signinAdmin', async (req, res)=> {
+    //console.log(req.body);
+    //res.json({message: "awesome"} );
+    try {
+        let token;
+        const { email, password } = req.body;
+
+        if(!email || !password)
+        {
+            return res.status(400).json({ error: "Plz fill the data" })
+        }
+
+        const userLogin = await Admin.findOne({ email:email });
+        //console.log(userLogin);
+
+        if(userLogin)
+        {
+            var isMatch = (password==userLogin.password);
+        }
 
         if(userLogin)
         {
@@ -99,13 +181,13 @@ router.post('/signin', async (req, res)=> {
         else{
             res.status(400).json({ error: "Invalid Credentials email"});
         }
-
-       
-        
-
     } catch(err) {
         console.log(err);
     }
+});
+
+router.get('/AdminHome', authenticateAdmin, (req, res) => {
+    res.send(req.rootAdmin);
 });
 
 router.get('/UserHome', authenticate, (req, res)=>{

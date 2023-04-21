@@ -4,21 +4,21 @@ import "../App.css";
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-const UserLogin= () => {
+const AdminLogin= () => {
 
     const history = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const loginUser = async (e) => {
+    const loginAdmin = async (e) => {
         e.preventDefault();
         if (!email || !password) {
             window.alert('Please enter both Email and Password!');
             return;
         }
 
-        const res= await fetch('/signin', {
+        const res= await fetch('/signinAdmin', {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
@@ -36,7 +36,7 @@ const UserLogin= () => {
             window.alert("Invalid Credentials");
         }  else{
             window.alert("Login Successful");
-            history("/UserHome");
+            history("/AdminHome");
         }
         
     }
@@ -45,14 +45,14 @@ const UserLogin= () => {
     return (
       <>
       <Navbar />
-      <div className="home-page">
+      <div className='home-page'>
 
       <section className="login-section">
         <div className="container mt-5">
           <div className="login-content row">
             <div className="col-md-15">
               <div className="login-form">
-                <h2 className="form-title">User Login</h2>
+                <h2 className="form-title">Admin Login</h2>
                 <form method="POST" className="register-form" id="register-form">
                   <div className="form-group">
                     <label htmlFor="email">
@@ -93,16 +93,20 @@ const UserLogin= () => {
                       id="signin"
                       className="form-submit button-primary bg-primary"
                       value="Login"
-                      onClick={loginUser}
+                      onClick={loginAdmin}
                     />
                   </div>
-            
                 </form>
               </div>
             </div>
-                <NavLink to="/UserSignup" className="login-image-link">
+    
+            {/* <div className="col-md-6">
+              <div className="login-image"> */}
+                <NavLink to="/AdminSignup" className="login-image-link">
                   Create an account
                 </NavLink>
+              {/* </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -112,4 +116,4 @@ const UserLogin= () => {
     
   )
 }
-export default UserLogin
+export default AdminLogin

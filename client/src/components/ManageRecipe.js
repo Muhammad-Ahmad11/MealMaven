@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaTrashAlt } from "react-icons/fa";
+import AdminNavbar from "./AdminNavbar";
+// import Footer from "./Footer";
 
 const ManageRecipe = () => {
   const [recipes, setRecipes] = useState([]);
@@ -112,6 +114,7 @@ const ManageRecipe = () => {
 
   return (
     <>
+    <AdminNavbar/>
 <div className="recipes-container">
   <h1 className="recipes-header">Manage Recipes</h1>
   <ul className="recipes-list">
@@ -139,7 +142,7 @@ const ManageRecipe = () => {
     ))}
   </ul>
 </div>
-<div style={{ position: 'fixed', bottom: '-1rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+<div style={{ position: 'fixed', bottom: '-4rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 <h4 style={{ textAlign: 'left' }}>Add Recipe:</h4>
       <form method="POST" id="activityForm">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '2rem' }}>
@@ -205,7 +208,7 @@ const ManageRecipe = () => {
     </div>
 
 
-    <div style={{ position: 'fixed', left:'68rem',bottom: '-1rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+    <div style={{ position: 'fixed', left:'68rem',bottom: '-5rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 <h4 style={{ textAlign: 'left' }}>Edit Recipe:</h4>
       <form method="POST" id="editForm">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '2rem' }}>
@@ -269,6 +272,7 @@ const ManageRecipe = () => {
       </div>
       </form>
     </div>
+    {/* <Footer/> */}
 </>
   );
 };

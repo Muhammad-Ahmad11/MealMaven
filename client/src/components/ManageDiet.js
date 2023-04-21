@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaTrashAlt } from "react-icons/fa";
+import AdminNavbar from "./AdminNavbar";
+// import Footer from "./Footer";
 
 const ManageDiet = () => {
   const [diet, setDiet] = useState([]);
@@ -112,6 +114,8 @@ const ManageDiet = () => {
 
   return (
     <>
+    <AdminNavbar/>
+    {/* <div className='grey-page'> */}
 <div className="recipes-container">
   <h1 className="recipes-header">Manage Diet Plans</h1>
   <ul className="recipes-list">
@@ -200,7 +204,7 @@ const ManageDiet = () => {
     </div>
 
 
-    <div style={{ position: 'fixed', left:'68rem',bottom: '2rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+    <div style={{ position: 'fixed', left:'68rem',bottom: '0rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 <h4 style={{ textAlign: 'left' }}>Edit Diet:</h4>
       <form method="POST" id="editForm">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '2rem' }}>
@@ -262,6 +266,8 @@ const ManageDiet = () => {
       </div>
       </form>
     </div>
+    {/* </div> */}
+    {/* <Footer/> */}
 </>
   );
 };

@@ -20,7 +20,7 @@ mongoose.connect(uri, {
     //useUnifiedTopology: true,
     //useFindAndModify: false
 }).then(()=> {
-    console.log("conn succ");
+    console.log("Connection successful");
 }).catch((err)=> console.log("No conn"));
 
 //module.exports =connectDB;
