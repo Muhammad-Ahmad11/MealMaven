@@ -3,6 +3,8 @@ const Recipe = require("../models/recipeschema");
 const router = express.Router();
 const DietPlan = require("../models/dietschema");
 const RequestDietPlan = require("../models/requestdietschema");
+require("dotenv").config();
+const {Configuration, OpenAIApi} = require("openai");
 
 router.get("/recipes", async (req, res) => {
   const type = req.query.type;
@@ -251,6 +253,43 @@ router.get('/dietplanfull/:plan', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal server error');
+  }
+});
+
+
+const configuration = new Configuration({
+  apiKey: process.env.OPEN_AI_KEY,
+});
+
+const openai = new OpenAIApi(configuration);
+
+router.post("/openai", async(req, res) => {
+  try{
+    const {prompt} = req.body;
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `Write a recipe based on these ingredients: ${prompt}
+               ###`,
+      temperature: 0.3,
+      max_tokens: 120,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
+    });
+
+    return res.status(200).json({
+      success: true,
+      data: response.data.choices[0].text
+    });
+  }
+  catch (err) {
+    console.error(err);
+    return res.status(400).json({
+      success: false,
+      error: err.response
+      ? err.response.data
+      : 'Internal server error', 
+    });
   }
 });
 
