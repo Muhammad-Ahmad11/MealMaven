@@ -46,7 +46,7 @@ const ProteinRecipe = () => {
     // </>
     <>
       <UserNavbar/>
-      <div className="home-page">
+      <div className="grey-page">
       <div className="recipe-container">
         <div className="recipes">
           <h1 className="recipes-header">Protein Recipes</h1>
@@ -65,17 +65,17 @@ const ProteinRecipe = () => {
           </ul>
         </div>
         <div className="food-info">
+        <h2 className="food-text2">About:</h2>
           <img
             className="food-image"
             src={food}
             alt="Sugar-free food"
           />
-          <h2 className="food-text2">About:</h2>
           <h4 className="food-text">
           Proteins are essential macronutrients that play a crucial role in building, repairing, and maintaining tissues in the human body
           <br></br>
               <br></br>
-              Protein dishes are meals that contain a significant amount of protein, either from animal sources such as meat, poultry, and fish
+              Protein dishes are meals that contain a significant amount of protein, either from animal sources such as meat, poultry, and fish.
           </h4>
         </div>
       </div>

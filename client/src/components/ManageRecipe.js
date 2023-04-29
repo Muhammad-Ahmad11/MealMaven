@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaTrashAlt } from "react-icons/fa";
 import AdminNavbar from "./AdminNavbar";
-// import Footer from "./Footer";
+import Footer from "./Footer";
 
 const ManageRecipe = () => {
   const [recipes, setRecipes] = useState([]);
@@ -115,8 +115,9 @@ const ManageRecipe = () => {
   return (
     <>
     <AdminNavbar/>
+    <div className="grey-page2">
 <div className="recipes-container">
-  <h1 className="recipes-header">Manage Recipes</h1>
+  <h1 className="recipes-header" style={{ marginTop: '1.5rem',marginBottom: '2.5rem'}}>Manage Recipes</h1>
   <ul className="recipes-list">
     {recipes.map((recipe) => (
       <li key={recipe._id} className="recipe">
@@ -142,17 +143,17 @@ const ManageRecipe = () => {
     ))}
   </ul>
 </div>
-<div style={{ position: 'fixed', bottom: '-4rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-<h4 style={{ textAlign: 'left' }}>Add Recipe:</h4>
+<div style={{ position: 'absolute', bottom: '-5rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginLeft: '1.5rem' }}>
+<h4 style={{ textAlign: 'left', marginLeft: '1rem' }}>Add Recipe:</h4>
       <form method="POST" id="activityForm">
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '2rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '0.5rem' }}>
       <label style={{ marginBottom: '0.5rem'}} htmlFor="name-textbox">
-          Name:
+          {/* Name: */}
         </label>
-        <input style={{ padding: '0.5rem', width: '10rem' }} type="text" id="name-textbox" name="name" value={recipeData.name} onChange={handleInputs} />
+        <input style={{ padding: '0.5rem', width: '10rem', marginBottom: '0.5rem' }} type="text" id="name-textbox" placeholder="Name" name="name" value={recipeData.name} onChange={handleInputs} />
         
         <label style={{ marginBottom: '0.5rem', marginTop: '1rem' }} htmlFor="type-dropdown">
-            Type:
+            {/* Type: */}
         </label>
         <select
             style={{ padding: '0.5rem', width: '10rem' }}
@@ -168,31 +169,33 @@ const ManageRecipe = () => {
         <option value="dairy">Dairy</option>
         <option value="starch free">Starch Free</option>
         </select>
-        
+        <br></br>
         <label style={{ marginBottom: '0.5rem' }} htmlFor="Ingred-textbox">
-          Ingredients:
+          {/* Ingredients: */}
         </label>
         <textarea
           style={{ padding: '0.5rem', minHeight: '8rem' }}
           id="big-textbox"
+          placeholder="Ingredients"
           name="ingredients"
           value={recipeData.ingredients}
           onChange={handleInputs}/>
-
+        <br></br>
         <label style={{ marginBottom: '0.5rem' }} htmlFor="Inst-textbox">
-          Instructions:
+          {/* Instructions: */}
         </label>
         <textarea
           style={{ padding: '0.5rem', minHeight: '8rem' }}
           id="big-textbox"
+          placeholder="Instructions"
           name="instructions"
           value={recipeData.instructions}
           onChange={handleInputs}/>
-
+        <br></br>
         <button
           style={{
             marginTop: '1rem',
-            padding: '0.5rem 1rem',
+            padding: '0.5rem 4rem',
             borderRadius: '1rem',
             backgroundColor: 'blue',
             color: 'white',
@@ -208,17 +211,17 @@ const ManageRecipe = () => {
     </div>
 
 
-    <div style={{ position: 'fixed', left:'68rem',bottom: '-5rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-<h4 style={{ textAlign: 'left' }}>Edit Recipe:</h4>
+    <div style={{ position: 'absolute', left:'68rem',bottom: '-5rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+<h4 style={{ textAlign: 'left', marginLeft: '0.8rem' }}>Edit Recipe:</h4>
       <form method="POST" id="editForm">
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '2rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '1rem' }}>
       <label style={{ marginBottom: '0.5rem'}} htmlFor="name-textbox">
-          Name of recipe to edit:
+          {/* Name of recipe to edit: */}
         </label>
-        <input style={{ padding: '0.5rem', width: '10rem' }} type="text" id="namee-textbox" name="name" value={editRecipeData.name} onChange={handleInputs2} />
+        <input style={{ padding: '0.5rem', width: '10rem', marginBottom: '0.5rem' }} type="text" id="namee-textbox" placeholder="Name" name="name" value={editRecipeData.name} onChange={handleInputs2} />
         
         <label style={{ marginBottom: '0.5rem', marginTop: '1rem' }} htmlFor="type-dropdown">
-            Type:
+            {/* Type: */}
         </label>
         <select
             style={{ padding: '0.5rem', width: '10rem' }}
@@ -234,31 +237,33 @@ const ManageRecipe = () => {
         <option value="dairy">Dairy</option>
         <option value="starch free">Starch Free</option>
         </select>
-        
+        <br></br>
         <label style={{ marginBottom: '0.5rem' }} htmlFor="Ingred-textbox">
-          Ingredients:
+          {/* Ingredients: */}
         </label>
         <textarea
           style={{ padding: '0.5rem', minHeight: '8rem' }}
           id="big-textbox"
+          placeholder="Ingredients"
           name="ingredients"
           value={editRecipeData.ingredients}
           onChange={handleInputs2}/>
-
+        <br></br>
         <label style={{ marginBottom: '0.5rem' }} htmlFor="Inst-textbox">
-          Instructions:
+          {/* Instructions: */}
         </label>
         <textarea
           style={{ padding: '0.5rem', minHeight: '8rem' }}
           id="big-textbox"
+          placeholder="Instructions"
           name="instructions"
           value={editRecipeData.instructions}
           onChange={handleInputs2}/>
-
+        <br></br>
         <button
           style={{
             marginTop: '1rem',
-            padding: '0.5rem 1rem',
+            padding: '0.5rem 4rem',
             borderRadius: '1rem',
             backgroundColor: 'blue',
             color: 'white',
@@ -272,7 +277,8 @@ const ManageRecipe = () => {
       </div>
       </form>
     </div>
-    {/* <Footer/> */}
+    </div>
+    <Footer/>
 </>
   );
 };

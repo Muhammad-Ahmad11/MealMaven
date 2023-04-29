@@ -195,9 +195,12 @@ const UserSignup = () => {
               onClick={PostData}
             />
           </div>
+          <br></br>
+          <p style={{marginBottom: '-0.8rem'}}>Already on MealMaven?
+          <NavLink to="/UserLogin" className="signup-image-link">Sign in</NavLink>
+          </p>
         </form>
       </div>
-                            <NavLink to="/UserLogin" className="signup-image-link">I am already registered</NavLink>
                        </div>
                    </div>
                </div>

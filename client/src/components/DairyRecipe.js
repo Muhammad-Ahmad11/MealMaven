@@ -46,7 +46,7 @@ const DairyRecipes = () => {
     // </>
     <>
       <UserNavbar/>
-      <div className="home-page">
+      <div className="grey-page">
       <div className="recipe-container">
         <div className="recipes">
           <h1 className="recipes-header">Dairy Recipes</h1>
@@ -65,12 +65,12 @@ const DairyRecipes = () => {
           </ul>
         </div>
         <div className="food-info">
+        <h2 className="food-text2">About:</h2>
           <img
             className="food-image"
             src={food}
             alt="Sugar-free food"
           />
-          <h2 className="food-text2">About:</h2>
           <h4 className="food-text">
           Dairy products are a rich source of calcium, vitamin D, and other essential nutrients that are important for maintaining healthy bones and teeth.
           <br></br>

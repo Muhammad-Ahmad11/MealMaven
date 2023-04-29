@@ -61,15 +61,15 @@ const AdminDietPlan = () => {
   return (
     <>
     <AdminNavbar/>
-    {/* <div className="grey-page"> */}
+    <div className="grey-page2">
     <div className="recipes-container">
-      <h1 className="recipes-header">Assign Diet Plan</h1>
+      <h1 className="recipes-header" style={{ marginTop: '1.5rem',marginBottom: '2.5rem'}}>Assign Diet Plan</h1>
       <ul className="recipes-list">
         {requests
           .filter((request) => !request.complete)
           .map((request) => (
             <li key={request._id} className="recipe">
-              <h2 className="recipe-name">{request.email}</h2>
+              <h2 className="recipe-name"><strong style={{marginRight: '1rem'}}>User:</strong>{request.email}</h2>
               <p className="recipe-ingredients">
                 <strong>Age:</strong> {request.age}
               </p>
@@ -89,9 +89,12 @@ const AdminDietPlan = () => {
                 <strong>Fitness Goal:</strong> {request.goal}
               </p>
               <div>
-                <label htmlFor={`diet-plan-${request._id}`}>
-                  Assign Diet Plan:
-                </label>
+                {/* <br></br> */}
+                {/* <label htmlFor={`diet-plan-${request._id}`} style={{marginRight: '1rem'}}>
+                  Assign Diet Plan: 
+                </label> */}
+                {/* <br></br> */}
+                
                 <select  onChange={handleDietChange} value={selectedDiet}>
                   <option value="">Choose: </option>
                   {diets.map((diet) => (
@@ -101,18 +104,28 @@ const AdminDietPlan = () => {
                   ))}
                 </select>
                 <button
+                  style={{
+                    // marginTop: '1rem',
+                    // marginLeft: '3rem',
+                    padding: '0.5rem 2rem',
+                    borderRadius: '1rem',
+                    backgroundColor: 'blue',
+                    color: 'white',
+                    border: 'none',
+                  }}
                   onClick={(event) =>
                     handleAssignDiet(request._id, selectedDiet, event)
                   }
                 >
                   Assign
                 </button>
+                <br></br>
               </div>
             </li>
           ))}
       </ul>
       </div>
-    {/* </div> */}
+    </div>
     <Footer/>
     
     </>

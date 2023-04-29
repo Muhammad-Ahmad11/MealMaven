@@ -46,7 +46,7 @@ const CarbFreeRecipe = () => {
     // </>
     <>
       <UserNavbar/>
-      <div className="home-page">
+      <div className="grey-page">
       <div className="recipe-container">
         <div className="recipes">
           <h1 className="recipes-header">Carb Free Recipes</h1>
@@ -65,17 +65,17 @@ const CarbFreeRecipe = () => {
           </ul>
         </div>
         <div className="food-info">
+        <h2 className="food-text2">About:</h2>
           <img
             className="food-image"
             src={food}
             alt="Sugar-free food"
           />
-          <h2 className="food-text2">About:</h2>
           <h4 className="food-text">
           Carb-free dishes are those that contain no or very minimal amounts of carbohydrates. These dishes are often preferred by people who follow a ketogenic or low-carb diet to achieve weight loss or manage certain health conditions like diabetes.
               <br></br>
               <br></br>
-When making carb-free dishes, it's important to avoid all sources of carbohydrates, including grains, starchy vegetables
+When making carb-free dishes, it's important to avoid all sources of carbohydrates, including grains, starchy vegetables.
           </h4>
         </div>
       </div>
