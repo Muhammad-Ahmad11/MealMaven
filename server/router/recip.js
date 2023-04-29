@@ -256,6 +256,7 @@ router.get('/dietplanfull/:plan', async (req, res) => {
   }
 });
 
+
 const configuration = new Configuration({
   apiKey: process.env.OPEN_AI_KEY,
 });
