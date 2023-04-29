@@ -172,10 +172,14 @@ const AdminSignup = () => {
               onClick={PostData}
             />
           </div>
+          <br></br>
+          <p style={{marginBottom: '-0.8rem'}}>Already on MealMaven?
+          <NavLink to="/AdminLogin" className="signup-image-link">Sign in</NavLink>
+          </p>
         </form>
       </div>
       {/* <div className='col-md-6'> */}
-                            <NavLink to="/AdminLogin" className="signup-image-link">I am already registered</NavLink>
+                            {/* <NavLink to="/AdminLogin" className="signup-image-link">I am already registered</NavLink> */}
                         {/* </div> */}
                        </div>
                    </div>

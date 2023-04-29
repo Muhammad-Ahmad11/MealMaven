@@ -23,6 +23,7 @@ import AdminLogin from './components/AdminLogin';
 import AdminHome from './components/AdminHome';
 import UserDietPlan from './components/UserDietPlan';
 import AdminDietPlan from './components/AdminDietPlan';
+import CustomRecipe from './components/CustomRecipe';
 // import Footer from './components/Footer';
 
 const App = () => {
@@ -49,7 +50,8 @@ const App = () => {
         <Route path="/AdminHome" element={<AdminHome/>}/>
         <Route path="/UserDietPlan" element={<UserDietPlan/>}/>
         <Route path="/AdminDietPlan" element={<AdminDietPlan/>}/>
-        {/* <Route path="/try" element={<Footer/>}/> */}
+        <Route path="/Ad" element={<Admin/>}/>
+        <Route path="/CustomRecipe" element={<CustomRecipe/>}/>
         <Route element={<ErrorPage/>}/>
     </Routes>
     </>

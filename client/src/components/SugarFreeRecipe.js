@@ -72,7 +72,7 @@ const SugarFreeRecipe = () => {
   return (
     <>
       <UserNavbar/>
-      <div className="home-page">
+      <div className="grey-page">
       <div className="recipe-container">
         <div className="recipes">
           <h1 className="recipes-header">Sugar Free Recipes</h1>
@@ -90,18 +90,20 @@ const SugarFreeRecipe = () => {
             ))}
           </ul>
         </div>
+        
         <div className="food-info">
+        <h2 className="food-text2">About:</h2>
           <img
             className="food-image"
             src={food}
             alt="Sugar-free food"
           />
-          <h2 className="food-text2">About:</h2>
+          
           <h4 className="food-text">
           Sugar-free dishes are those that contain no added sugars or sweeteners. This can be beneficial for individuals who are looking to reduce their sugar intake for health reasons.
           <br></br>
               <br></br>
-To make sugar-free dishes, it's important to avoid using sugar and other sweeteners such as honey, maple syrup, agave nectar etc
+          To make sugar-free dishes, it's important to avoid using sugar and other sweeteners such as honey, maple syrup, agave nectar etc.
           </h4>
         </div>
       </div>

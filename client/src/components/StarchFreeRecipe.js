@@ -46,7 +46,7 @@ const StarchFreeRecipe = () => {
     // </>
     <>
       <UserNavbar/>
-      <div className="home-page">
+      <div className="grey-page">
       <div className="recipe-container">
         <div className="recipes">
           <h1 className="recipes-header">Starch Free Recipes</h1>
@@ -65,17 +65,18 @@ const StarchFreeRecipe = () => {
           </ul>
         </div>
         <div className="food-info">
+        <h2 className="food-text2">About:</h2>
           <img
             className="food-image"
             src={food}
             alt="Sugar-free food"
           />
-          <h2 className="food-text2">About:</h2>
+          
           <h4 className="food-text">
           Starch-free dishes are those that do not contain starchy foods such as grains, potatoes, and legumes. These dishes are often preferred by people who are on a low-carb or ketogenic diet, or those with celiac disease or other gluten sensitivities.
           <br></br>
               <br></br>
-When making starch-free dishes, it's important to avoid ingredients such as wheat, corn, rice, potatoes etc
+When making starch-free dishes, it's important to avoid ingredients such as wheat, corn, rice, potatoes etc.
           </h4>
         </div>
       </div>

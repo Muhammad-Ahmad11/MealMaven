@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaTrashAlt } from "react-icons/fa";
 import AdminNavbar from "./AdminNavbar";
-// import Footer from "./Footer";
+import Footer from "./Footer";
 
 const ManageDiet = () => {
   const [diet, setDiet] = useState([]);
@@ -115,9 +115,9 @@ const ManageDiet = () => {
   return (
     <>
     <AdminNavbar/>
-    {/* <div className='grey-page'> */}
+    <div className='grey-page2'>
 <div className="recipes-container">
-  <h1 className="recipes-header">Manage Diet Plans</h1>
+  <h1 className="recipes-header" style={{ marginTop: '1.5rem',marginBottom: '2.5rem'}}>Manage Diet Plans</h1>
   <ul className="recipes-list">
     {diet.map((dietplan) => (
       <li key={dietplan._id} className="recipe">
@@ -140,17 +140,17 @@ const ManageDiet = () => {
     ))}
   </ul>
 </div>
-<div style={{ position: 'fixed', bottom: '2rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-<h4 style={{ textAlign: 'left' }}>Add Diet:</h4>
+<div style={{ position: 'absolute', bottom: '2rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginLeft: '1.5rem' }}>
+<h4 style={{ textAlign: 'left', marginLeft: '1.5rem' }}>Add Diet:</h4>
       <form method="POST" id="activityForm">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '2rem' }}>
-      <label style={{ marginBottom: '0.5rem'}} htmlFor="name-textbox">
-          Name:
+      <label style={{ marginBottom: '0.5rem', marginTop: '-1.5rem'}} htmlFor="name-textbox">
+          {/* Name: */}
         </label>
-        <input style={{ padding: '0.5rem', width: '10rem' }} type="text" id="name-textbox" name="name" value={dietData.name} onChange={handleInputs} />
+        <input style={{ padding: '0.5rem', width: '10rem' }} type="text" id="name-textbox" placeholder='Name' name="name" value={dietData.name} onChange={handleInputs} />
         
         <label style={{ marginBottom: '0.5rem', marginTop: '1rem' }} htmlFor="type-dropdown">
-            Type:
+            {/* Type: */}
         </label>
         <select
             style={{ padding: '0.5rem', width: '10rem' }}
@@ -164,31 +164,34 @@ const ManageDiet = () => {
         <option value="weight loss">Weight Loss</option>
 
         </select>
-        
+        <br></br>
         <label style={{ marginBottom: '0.5rem' }} htmlFor="Ingred-textbox">
-          Duration:
+          {/* Duration: */}
         </label>
         <input
           style={{ padding: '0.5rem', width: '10rem' }} 
           id="big-textbox"
+          placeholder='Duration'
           name="duration"
           value={dietData.duration}
           onChange={handleInputs}/>
-
+          <br></br>
         <label style={{ marginBottom: '0.5rem' }} htmlFor="Inst-textbox">
-          Details:
+          {/* Details: */}
         </label>
         <textarea
           style={{ padding: '0.5rem', minHeight: '8rem' }}
           id="big-textbox"
+          placeholder='Details'
           name="details"
           value={dietData.details}
           onChange={handleInputs}/>
-
+        <br></br>
         <button
           style={{
             marginTop: '1rem',
-            padding: '0.5rem 1rem',
+            // marginLeft: '3rem',
+            padding: '0.5rem 4rem',
             borderRadius: '1rem',
             backgroundColor: 'blue',
             color: 'white',
@@ -204,17 +207,17 @@ const ManageDiet = () => {
     </div>
 
 
-    <div style={{ position: 'fixed', left:'68rem',bottom: '0rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-<h4 style={{ textAlign: 'left' }}>Edit Diet:</h4>
+    <div style={{ position: 'absolute', left:'68rem',bottom: '2rem', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+<h4 style={{ textAlign: 'left', marginLeft: '1.5rem' }}>Edit Diet:</h4>
       <form method="POST" id="editForm">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '2rem' }}>
-      <label style={{ marginBottom: '0.5rem'}} htmlFor="name-textbox">
-          Name of diet plan to edit:
+      <label style={{ marginBottom: '0.5rem', marginTop: '-1.5rem'}} htmlFor="name-textbox">
+          {/* Name of diet plan to edit: */}
         </label>
-        <input style={{ padding: '0.5rem', width: '10rem' }} type="text" id="namee-textbox" name="name" value={editDietData.name} onChange={handleInputs2} />
+        <input style={{ padding: '0.5rem', width: '10rem' }} type="text" placeholder='Name' id="namee-textbox" name="name" value={editDietData.name} onChange={handleInputs2} />
         
         <label style={{ marginBottom: '0.5rem', marginTop: '1rem' }} htmlFor="type-dropdown">
-            Type:
+            {/* Type: */}
         </label>
         <select
             style={{ padding: '0.5rem', width: '10rem' }}
@@ -228,31 +231,33 @@ const ManageDiet = () => {
         <option value="weight loss">Weight Loss</option>
 
         </select>
-        
+        <br></br>
         <label style={{ marginBottom: '0.5rem' }} htmlFor="Ingred-textbox">
-          Duration:
+          {/* Duration: */}
         </label>
         <input
           style={{ padding: '0.5rem', width: '10rem' }} 
           id="big-textbox"
+          placeholder='Duration'
           name="duration"
           value={editDietData.duration}
           onChange={handleInputs2}/>
-
+        <br></br>
         <label style={{ marginBottom: '0.5rem' }} htmlFor="Inst-textbox">
-          Details:
+          {/* Details: */}
         </label>
         <textarea
           style={{ padding: '0.5rem', minHeight: '8rem' }}
           id="big-textbox"
+          placeholder='Details'
           name="details"
           value={editDietData.details}
           onChange={handleInputs2}/>
-
+        <br></br>
         <button
           style={{
             marginTop: '1rem',
-            padding: '0.5rem 1rem',
+            padding: '0.5rem 4rem',
             borderRadius: '1rem',
             backgroundColor: 'blue',
             color: 'white',
@@ -266,8 +271,8 @@ const ManageDiet = () => {
       </div>
       </form>
     </div>
-    {/* </div> */}
-    {/* <Footer/> */}
+    </div>
+    <Footer/>
 </>
   );
 };

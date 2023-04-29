@@ -96,15 +96,19 @@ const AdminLogin= () => {
                       onClick={loginAdmin}
                     />
                   </div>
+                  <br></br>
+                  <p style={{marginBottom: '-0.8rem'}}>New to MealMaven?
+                  <NavLink to="/AdminSignup" className="signup-image-link">Join now</NavLink>
+                  </p>
                 </form>
               </div>
             </div>
     
             {/* <div className="col-md-6">
               <div className="login-image"> */}
-                <NavLink to="/AdminSignup" className="login-image-link">
+                {/* <NavLink to="/AdminSignup" className="login-image-link">
                   Create an account
-                </NavLink>
+                </NavLink> */}
               {/* </div>
             </div> */}
           </div>
