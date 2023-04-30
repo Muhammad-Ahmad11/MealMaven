@@ -459,6 +459,7 @@ label {
 }
 
 input[name='height'], input[name='weight'], 
+input[name='email'],
 input[name='age'], textarea[name='prefer'],
 textarea[name='avoid'] ,select[name='goal'] {
   padding: 5px;

@@ -7,6 +7,7 @@ const DailyActivity = () => {
 
     const [userData, setUserData] = useState({foodIntake:"", steps:""});
     const [showData, setShowData] = useState({});
+    const footerStyle = { marginTop: '25rem'};
 
     const callDailyActivity = async () => {
       try{
@@ -86,21 +87,63 @@ const DailyActivity = () => {
     <h1 className='recipes-header'  style={{marginTop: '1.5rem',marginBottom: '2.5rem'}} >Your Daily Activities:</h1>
     
     <ul className="recipes-list">
-    {showData.activity && showData.activity.length > 0 ?
-    showData.activity.map((activity, index) => (
-      <li className="recipe">
-      <div key={index}>
-        <h5>Food Intake: {activity.foodIntake}</h5>
-        <h5>Steps: {activity.steps}</h5>
-        <h5>Date: {JSON.stringify(activity.date).substring(1, 11)}</h5>
-        <hr /> 
-      </div>
-      </li>
-    ))
-    :
-    <h5>No activities found.</h5>
-   
-  }
+    {showData.activity && (
+  showData.activity.length === 1 ? (
+    showData.activity.map((activity, index) => {
+      footerStyle.marginTop = '15rem';
+      return (
+        <li className="recipe" key={index}>
+          <div>
+            <h5>Food Intake: {activity.foodIntake}</h5>
+            <h5>Steps: {activity.steps}</h5>
+            <h5>Date: {JSON.stringify(activity.date).substring(1, 11)}</h5>
+            <hr /> 
+          </div>
+        </li>
+      );
+    })
+  ) : (
+    showData.activity && (
+      showData.activity.length === 2 ? (
+        showData.activity.map((activity, index) => {
+          footerStyle.marginTop = '3rem';
+          return (
+            <li className="recipe" key={index}>
+              <div>
+                <h5>Food Intake: {activity.foodIntake}</h5>
+                <h5>Steps: {activity.steps}</h5>
+                <h5>Date: {JSON.stringify(activity.date).substring(1, 11)}</h5>
+                <hr /> 
+              </div>
+            </li>
+          );
+        })
+      ) : (
+        showData.activity.length > 0 ? (
+          showData.activity.map((activity, index) => {
+            footerStyle.marginTop = '0rem';
+            return (
+              <li className="recipe" key={index}>
+                <div>
+                  <h5>Food Intake: {activity.foodIntake}</h5>
+                  <h5>Steps: {activity.steps}</h5>
+                  <h5>Date: {JSON.stringify(activity.date).substring(1, 11)}</h5>
+                  <hr /> 
+                </div>
+              </li>
+            );
+          })
+        ) : (
+          <h5>No activities found.</h5>
+        )
+      )
+    )
+  )
+)}
+
+
+
+
   
   </ul>
     <div style={{ position: 'absolute', bottom: '5rem', left: 0 ,padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginLeft: '2rem' }}>
@@ -143,7 +186,9 @@ const DailyActivity = () => {
     </div>
     </div> 
     </div>
+     <div style={{ position: 'relative', bottom: 0, left: 0, width: '100%', textAlign: 'center', marginTop: footerStyle.marginTop.valueOf().toString()}}>
     <Footer/>
+    </div>
     
    
 {/* </div> */}

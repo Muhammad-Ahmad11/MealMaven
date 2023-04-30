@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import Footer from './Footer';
+import UserNavbar from './UserNavbar';
+
 
 const PaymentForm = () => {
   const [paymentError, setPaymentError] = useState(null);
@@ -23,7 +26,7 @@ const PaymentForm = () => {
         console.log(err);
       }
     };
-
+ 
     fetchData();
   }, []);
 
@@ -54,6 +57,8 @@ const PaymentForm = () => {
   };
 
   return (
+    <>
+    <UserNavbar/>
     <div>
       <StripeCheckout
         stripeKey="pk_test_51N2TpHJVoaHWZoMRPTzIfdejGQd01KAlgY6V63F2T2Ql41t13U1ASeSScv7JdfbqxWbvxxeWpgbHUwpBe1Jzx7TY00OlDq4kfe"
@@ -70,6 +75,10 @@ const PaymentForm = () => {
         </div>
       )}
     </div>
+    <div style={{ position: 'relative', top:360,bottom: 0, left: 0, width: '100%', textAlign: 'center', marginTop: '0rem'}}>
+    <Footer/>
+    </div>
+    </>
   );
 };
 
