@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const authenticate = require("../middleware/authenticate");
 const authenticateAdmin = require("../middleware/authenticateAdmin");
 const cokie = require ('cookie-parser');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 router.use(cokie());
 
 require('../db/connect'); 
@@ -229,7 +230,32 @@ router.post('/DailyActivityPost', authenticate, async (req, res)=>{
     }
 });
 
+// Handle payment request
+router.post('/Payment', async (req, res) => {
+    const { amount, userData } = req.body;
+    console.log(userData);
+    try {
+      const payment = await stripe.charges.create({
+        amount: amount,
+        currency: 'USD',
+        source: 'tok_visa', //this is just for testing purpose, we need to assign user's token then when we want to live this website
+        description: 'Payment for premium feature in MealMaven',
+      });
+  
+      // Update user's account to indicate they have access to the premium feature
+      const user = await User.findOne({ _id: userData._id });
 
-
+        if(user)
+        {
+            user.hasPremiumAccess = true;
+            await user.save();
+        }
+      console.log("success");
+      res.status(200).json({ success: true });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, error: error });
+    }
+  });
 
 module.exports = router;

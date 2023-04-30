@@ -24,8 +24,8 @@ import AdminHome from './components/AdminHome';
 import UserDietPlan from './components/UserDietPlan';
 import AdminDietPlan from './components/AdminDietPlan';
 import CustomRecipe from './components/CustomRecipe';
+import PaymentForm from './components/PaymentForm';
 // import Footer from './components/Footer';
-
 
 const App = () => {
   return (
@@ -54,6 +54,7 @@ const App = () => {
         <Route path="/Ad" element={<Admin/>}/>
         <Route path="/CustomRecipe" element={<CustomRecipe/>}/>
         <Route element={<ErrorPage/>}/>
+        <Route path='/Payment' element={<PaymentForm/>}/>
     </Routes>
     </>
   )

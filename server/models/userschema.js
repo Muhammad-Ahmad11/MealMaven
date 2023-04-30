@@ -45,7 +45,11 @@ const userschema = new mongoose.Schema({
                 required:true
             }
         }
-    ]
+    ],
+    hasPremiumAccess: {
+        type: Boolean,
+        required:false
+    }
 });
 
 userschema.methods.generateAuthToken = async function () {
