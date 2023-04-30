@@ -26,6 +26,7 @@ import AdminDietPlan from './components/AdminDietPlan';
 import CustomRecipe from './components/CustomRecipe';
 // import Footer from './components/Footer';
 
+
 const App = () => {
   return (
     <>
@@ -56,5 +57,8 @@ const App = () => {
     </Routes>
     </>
   )
+  
 }
+
+
 export default App

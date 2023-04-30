@@ -4,7 +4,13 @@ import UserNavbar from './UserNavbar';
 import Footer from './Footer';
 // import User from './User';
 
+import { setNotification } from './Notifications';
+
 const UserHome = () => {
+
+  useEffect(() => {
+    setNotification();
+  }, []);
 
   const history = useNavigate();
   const [userData, setUserData] = useState({});
