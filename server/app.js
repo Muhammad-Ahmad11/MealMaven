@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const express = require('express')
 const app = express();
 const connectDB = require("./db/connect");
+
 //const User = require('./models/userschema');
 
-dotenv.config({ path: './config.env'});  
+dotenv.config({ path: './config.env' });
 
 app.use(express.json());
 
@@ -26,11 +27,11 @@ app.use(require('./router/recip'));
 //    res.send("Hello about");
 //    connectDB();
 //});
-app.get('/contact', (req, res)=>{
+app.get('/contact', (req, res) => {
     res.send("Hello contact");
 });
 
-app.listen(3001, () =>{
+app.listen(3001, () => {
     console.log("Server");
 }
 )
